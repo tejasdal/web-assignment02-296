@@ -1,0 +1,24 @@
+.carousel-item{
+    height: 100vh;
+}
+.bg-black{
+    background-color: black;
+}
+.bg-first{
+    background-color: #235753;
+}
+.bg-second{
+    background-color: #0C496E;
+}
+.bg-third{
+    background-color: #685065;
+}
+.bg-forth{
+    background-color: #8F000A;
+}
+.bg-fifth{
+    background-color: #165A64;
+}
+.bg-img-light{
+    background-color: #EDF2F4;
+}

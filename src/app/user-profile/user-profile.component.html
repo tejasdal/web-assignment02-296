@@ -1,0 +1,117 @@
+<app-nav-bar></app-nav-bar>
+<!-- Profile Image -->
+<div class="container justify-content-center my-1 p-4 bg-l">
+    <div class="row offset-2 justify-content-start">
+        <div class="col-4 col-md-2">
+            <img class="img-fluid rounded-circle" [src]="bindingUser.imgUrl" />
+        </div>
+        <div class="col-8 col-md-8 my-2 mx-0">
+            <h4 class="font-weight-bold">John Doe</h4>
+            <p class="font-weight-light">{{'@'+bindingUser.userName}}</p>
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <label class="btn btn-primary btn-sm" for="choosephoto">
+                        <i class="fa fa-camera fa-1x" style="color: white; padding-right: 10px;"></i>Choose
+                        Photo</label>
+                    <input type="file" #profilephoto accept="image/*" id="choosephoto" hidden
+                        (change)="changeProfilePhoto(profilephoto)">
+                </div>
+                <div class="col-12 col-md-6">
+                    <button id="edit" class="btn btn-primary btn-sm" (click)="enable()">
+                        <i class="fa fa-pencil fa-1x" style="color: white; padding-right: 10px;"></i>Edit
+                        Profile</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form class="needs-validation" name="profileForm">
+        <!-- First Name and Last Name -->
+        <div class="row offset-2 justify-content-start my-4 px-3">
+            <div class="col-12 col-md-4">
+                <label for="firstname">First Name *</label>
+                <input type="text" class="form-control" placeholder="First Name" id="firstname" #firstname="ngModel"
+                    name="firstname" ngModel [disabled]="isInputEditable" [(ngModel)]='bindingUser.firstName' required>
+                <div class="alert-danger" *ngIf="firstname.touched && !firstname.valid">
+                    <span *ngIf="firstname.errors.required">First name is required.</span>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <label for="lastname">Last Name *</label>
+                <input type="text" class="form-control" placeholder="Last Name" id="lastname"
+                    [disabled]='isInputEditable' [(ngModel)]='bindingUser.lastName' #lastname="ngModel" name="lastname"
+                    ngModel required>
+                <div class="alert-danger" *ngIf="lastname.touched && !lastname.valid">
+                    <span *ngIf="lastname.errors.required">Last name is required.</span>
+                </div>
+            </div>
+        </div>
+        <!-- Email Id -->
+        <div class="row offset-2 justify-content-start my-4 px-3">
+            <div class="col-12 col-md-8">
+                <label for="email">Email *</label>
+                <input type="email" class="form-control" placeholder="Email" id="email" [disabled]='isInputEditable'
+                    [(ngModel)]='bindingUser.emailId' #email="ngModel" name="email" ngModel required pattern="^[A-z0-9._%+-]+@[A-z0-9.-]+\.[A-z]{2,4}$">
+                <div class="alert-danger" *ngIf="email.touched && !email.valid">
+                    <span *ngIf="email.errors.required">Email is required.</span>
+                    <span *ngIf="email.errors.pattern">Invalid email address.</span>
+                </div>
+            </div>
+        </div>
+        <!-- User Name -->
+        <div class="row offset-2 justify-content-start my-4 px-3">
+            <div class="col-12 col-md-8">
+                <label for="username">Username *</label>
+                <input type="text" class="form-control" placeholder="Username" id="username"
+                    [disabled]='isInputEditable' [(ngModel)]='bindingUser.userName' #username="ngModel" name="username"
+                    ngModel required>
+                <div class="alert-danger" *ngIf="username.touched && !username.valid">
+                    <span *ngIf="username.errors.required">Username is required.</span>
+                </div>
+            </div>
+        </div>
+        <!-- LinkedIn Link -->
+        <div class="row offset-2 justify-content-start my-4 px-3">
+            <div class="col-12 col-md-8">
+                <label for="linkedin">LinkedIn URL</label>
+                <input type="text" class="form-control" placeholder="LinkedIn URL" id="linkedin"
+                    [disabled]='isInputEditable' [(ngModel)]='bindingUser.linkedIn' >
+            </div>
+        </div>
+        <!-- Bio -->
+        <div class="row offset-2 justify-content-start my-4 px-3">
+            <div class="col-12 col-md-8">
+                <label for="bio">Add BIO</label>
+                <textarea class="form-control" rows="5" id="bio" placeholder="Add Bio" [disabled]='isInputEditable'
+                    [(ngModel)]='bindingUser.bio'></textarea>
+            </div>
+        </div>
+        <!-- Save -->
+        <div class="row justify-content-center offset-2 my-4 px-3">
+
+            <div class="col-4">
+                <button id="save" class="btn btn-secondary btn-md btn-block" (click)="disable()"
+                    [disabled]='isInputEditable'>Cancel</button>
+            </div>
+            <div class="col-4">
+                <button id="save" class="btn btn-primary btn-md btn-block" (click)="saveUser()"
+                    [disabled]='(!firstname.valid || !lastname.valid || !email.valid || !username.valid)'>Save</button>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <!-- Success Message -->
+        <div class="row offset-2 justify-content-start my-4 px-3" *ngIf="showSuccessMsg">
+            <div class="col-12 col-md-8">
+                <p class="alert alert-success">
+                    Profile Changes saved successfully!
+                </p>
+            </div>
+        </div>
+        <div class="row offset-2 justify-content-start my-4 px-3" *ngIf="showErrorMsg">
+            <div class="col-12 col-md-8">
+                <p class="alert alert-danger">
+                    Error while saving saving profile changes!
+                </p>
+            </div>
+        </div>
+    </form>
+</div>

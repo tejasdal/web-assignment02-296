@@ -1,0 +1,24 @@
+<h3 mat-dialog-title>Add new Activity</h3>
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Activity</mat-label>
+        <input #activity="ngModel" required ngModel name="activity" matInput [(ngModel)]="data.activity">
+        <mat-error *ngIf="activity.touched && !activity.valid">
+            <div *ngIf="activity.errors.required">Activity is required</div>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <!-- Date Picker to enter a deadline for the activity -->
+        <mat-label>Deadline</mat-label>
+        <input  #deadline="ngModel" matInput required ngModel name="deadline" [matDatepicker]="myDatepicker" [(ngModel)]="data.deadline">
+        <mat-error *ngIf="deadline.touched && !deadline.valid">
+            <div *ngIf="deadline.errors.required">Deadline date is required</div>
+        </mat-error>
+    </mat-form-field>
+    <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial [disabled]="!deadline.valid || !activity.valid">Add</button>
+</div>
