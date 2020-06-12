@@ -1,5 +1,6 @@
 <!-- Nav bar contains Heading and AboutUs and ContanctUs button -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<app-nav-bar></app-nav-bar>
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container">
     <a class="navbar-brand" href="#">Job Tracker</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -20,7 +21,7 @@
       </ul>
     </div>
   </div>
-</nav>
+</nav> -->
 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -282,13 +283,11 @@
           <!-- Email ID -->
           <div class="col p-2 mb-3">
             <label for="email">Email ID *</label>
-            <div class="input-group">
-              <input type="text" class="form-control" id="email" #email="ngModel" ngModel name="email"
-                placeholder="Email ID" required pattern="^[A-z0-9._%+-]+@[A-z0-9.-]+\.[A-z]{2,4}$">
-              <div class="alert-danger" *ngIf="email.touched && !email.valid" style="width: 100%;">
-                <span *ngIf="email.errors.required">Your email id is required.</span>
-                <span *ngIf="email.errors.pattern">Invalid email address.</span>
-              </div>
+            <input type="text" class="form-control" id="email" #email="ngModel" ngModel name="email"
+              placeholder="Email ID" required pattern="^[A-z0-9._%+-]+@[A-z0-9.-]+\.[A-z]{2,4}$">
+            <div class="alert-danger" *ngIf="email.touched && !email.valid">
+              <span *ngIf="email.errors.required">Your email id is required.</span>
+              <span *ngIf="email.errors.pattern">Invalid email address.</span>
             </div>
           </div>
           <!-- Message -->
