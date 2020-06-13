@@ -27,14 +27,14 @@ export class JobBoardComponent implements OnInit {
   maxJobStatusId: number = 1;
   maxJobId: number = 1;
 
-  public echo(listNumber: number, jobTitle: string) {
+  public delete(listNumber: number, jobId: number) {
     // delete job details from the arrr
     this.jobBoardDetails.forEach((list) => {
-      if (listNumber === list.order) {
+      if (listNumber === list.id) {
         list.jobs.forEach((job, currentIndex) => {
-          if (job.jobTitle === jobTitle) {
+          if (job.id === jobId) {
             list.jobs.splice(currentIndex, 1);
-            console.log("Item deleted: " + jobTitle);
+            console.log("Item deleted: " + job.jobTitle+ " jobID: "+ job.id + "listID: "+ list.id);
           }
         });
       }

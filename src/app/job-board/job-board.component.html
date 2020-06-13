@@ -8,7 +8,7 @@
         <div cdkDropList [cdkDropListData]="listItem.jobs" class="job-list" (cdkDropListDropped)="drop($event)">
             <div class="job-box" *ngFor="let job of listItem.jobs" cdkDrag [ngStyle]="{'background': job.color}">
                 <div style="display: inline-block; float: right;">
-                    <i class="fa fa-trash-o fa-1x" style="color: white; margin-right: 20px; cursor: pointer;" (click)="echo(listItem.order, job.jobTitle)"></i>
+                    <i class="fa fa-trash-o fa-1x" style="color: white; margin-right: 20px; cursor: pointer;" (click)="delete(listItem.id, job.id)"></i>
                 </div>
                 <!-- </span> -->
                 <h6 class="display-6 font-weight-light">{{job.company}}</h6>

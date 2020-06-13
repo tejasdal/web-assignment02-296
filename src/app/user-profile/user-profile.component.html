@@ -73,7 +73,7 @@
         <div class="row offset-2 justify-content-start my-4 px-3">
             <div class="col-12 col-md-8">
                 <label for="linkedin">LinkedIn URL</label>
-                <input type="text" class="form-control" placeholder="LinkedIn URL" id="linkedin"
+                <input type="text" class="form-control" placeholder="LinkedIn URL" id="linkedin" name="linkedin"
                     [disabled]='isInputEditable' [(ngModel)]='bindingUser.linkedIn' >
             </div>
         </div>
@@ -81,7 +81,7 @@
         <div class="row offset-2 justify-content-start my-4 px-3">
             <div class="col-12 col-md-8">
                 <label for="bio">Add BIO</label>
-                <textarea class="form-control" rows="5" id="bio" placeholder="Add Bio" [disabled]='isInputEditable'
+                <textarea class="form-control" rows="5" id="bio" name="bio" placeholder="Add Bio" [disabled]='isInputEditable'
                     [(ngModel)]='bindingUser.bio'></textarea>
             </div>
         </div>
