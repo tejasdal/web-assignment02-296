@@ -13,10 +13,6 @@ import { NavBarComponent } from '../nav-bar/nav-bar.component';
 })
 export class JobBoardComponent implements OnInit {
 
-
-  // Reference for drag and drop component of angular.
-  // https://material.angular.io/cdk/drag-drop/overview#transferring-items-between-lists
-  // https://github.com/alligatorio/angular-drag-drop/blob/master/src/app/app.component.scss or https://www.digitalocean.com/community/tutorials/angular-drag-drop
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
